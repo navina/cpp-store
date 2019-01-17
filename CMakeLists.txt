@@ -1,27 +1,20 @@
 cmake_minimum_required(VERSION 3.9)
 
 ## Clang Installation Directory
-#set(CLANG_INSTALL_BASE "/home/nramesh/cpp-projects/build")
+set(CLANG_INSTALL_BASE "/home/nramesh/cpp-projects/build")
 
 ## Set CMake compiler to Clang
-#set(CMAKE_C_COMPILER "${CLANG_INSTALL_BASE}/bin/clang")
-#set(CMAKE_CXX_COMPILER "${CLANG_INSTALL_BASE}/bin/clang++")
-#set(CMAKE_LINKER "${CLANG_INSTALL_BASE}/bin/clang++")
-#set(ENV{PATH} "${CLANG_INSTALL_BASE}:$ENV{PATH}")
-#set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
+set(CMAKE_C_COMPILER "${CLANG_INSTALL_BASE}/bin/clang")
+set(CMAKE_CXX_COMPILER "${CLANG_INSTALL_BASE}/bin/clang++")
+set(CMAKE_LINKER "${CLANG_INSTALL_BASE}/bin/clang++")
+set(ENV{PATH} "${CLANG_INSTALL_BASE}:$ENV{PATH}")
+set(CMAKE_FIND_LIBRARY_SUFFIXES ".a")
 
-# This will force the builds of any dependencies to pass this file with -DCMAKE_TOOLCHAIN_FILE=..., which Hunter
-# will forward to any dependency build.
-#set(CMAKE_TOOLCHAIN_FILE ${CMAKE_CURRENT_LIST_FILE})
-## Do I Really need the above ^^
-
-#set(ENV{LD_LIBRARY_PATH} "${LISDK_INSTALL_ROOT}/lib:${LISDK_INSTALL_ROOT}/lib64:$ENV{LD_LIBRARY_PATH}")
-#set(CMAKE_EXE_LINKER_FLAGS "-static-libgcc -static-libstdc++ -stdlib=libstdc++")
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_MODULE_PATH ${CMAKE_SOURCE_DIR}/cmake)
 set(CMAKE_INCLUDE_CURRENT_DIR TRUE)
-set(CMAKE_CXX_FLAGS "-g -O0 -Wall -fprofile-arcs -ftest-coverage")
+set(CMAKE_CXX_FLAGS "-g -O2 -Wall -fprofile-instr-generate -fcoverage-mapping")
 set(CMAKE_CXX_OUTPUT_EXTENSION_REPLACE ON)
 
 include("cmake/HunterGate.cmake")
