@@ -27,4 +27,5 @@ project(CppStore)
 ## Enable Testing - before adding any sub-directories ##
 enable_testing()
 
-add_subdirectory(my-rocks)
+# add_subdirectory(my-rocks)
+add_subdirectory(my-protobuf)
