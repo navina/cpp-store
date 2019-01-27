@@ -1,0 +1,6 @@
+syntax = "proto2";
+package foo;    // Avoid namespace collision;
+
+message Message {
+    required string line = 1;
+}

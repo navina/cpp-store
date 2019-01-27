@@ -1,0 +1,26 @@
+syntax = "proto2";
+package addressbook;    // Avoid namespace collision;
+
+message Person {
+    required string name = 1;   // =1 tag on each element is the order of serialization of fields
+    // Tag 1-15 require one byte less to encode. Hence, optimization -> all commonly used/required fields can be within 1-15.
+    required int32 id = 2;  // required is permanent and cannot be deprecated
+
+    optional string email = 3;  // optional is default in proto3 and doesn't have to mentioned explicitly
+    enum PhoneType {
+        MOBILE = 0;
+        HOME = 1;
+        WORK = 2;
+    }
+
+    message PhoneNumber {
+        required string number = 1;
+        optional PhoneType type = 2 [default = MOBILE];
+    }
+
+    repeated PhoneNumber phones = 4;    // filed value may be Repeated any number of times; (dynamically sized arrays)
+}
+
+message AddressBook {
+    repeated Person people = 1;
+}
