@@ -40,3 +40,7 @@ target_include_directories(messages PUBLIC ${CMAKE_CURRENT_BINARY_DIR})
 add_executable(hello "src/main.cpp")
 target_link_libraries(hello messages)
 add_dependencies(hello messages)
+
+add_executable(addressbook "src/AddressBookMain.cpp")
+target_link_libraries(addressbook messages)
+add_dependencies(addressbook messages)
