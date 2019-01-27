@@ -7,7 +7,9 @@ find_package(Protobuf CONFIG REQUIRED)
 ## Targets ##
 
 #Code Generation
-set(MESSAGES_PROTOS "proto/messages.proto")
+set(MESSAGES_PROTOS
+        "proto/messages.proto"
+        "proto/addressbook.proto")
 set(MESSAGES_SRCS)
 set(MESSAGES_HDRS)
 
