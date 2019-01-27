@@ -34,3 +34,11 @@ and `*/pb.cc` implementation files for the classes.
 * `bool SerializeToOstream(ostream* output) const;` 
 * `bool ParseFromIstream(istream* input);`
 
+## Optimizations
+* Reuse message objects when possible -> reduce pressure on protobuf's memory allocator
+* If messages vary a lot in size and shape, then it is better to monitor the size by using `SpaceUsed` method and delete them, if necessary. 
+* System's memory allocator may not be optimized for allocating lots of small objects from multiple threads. In such cases, use special memory allocator like Google's tcmalloc.
+
+## Advanced Features
+* Use the method from `Message::Reflection` interface to read iterate over messages without writing code against a specific message type
+* convert from proto binary to other encodings (xml or json) 

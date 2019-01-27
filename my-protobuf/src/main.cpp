@@ -1,5 +1,5 @@
 #include <iostream>
-#include "messages.pb.cc"
+#include "messages.pb.h"
 
 using namespace std;
 int main (int argc, char const *argv[]) {
